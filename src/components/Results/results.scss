@@ -1,0 +1,22 @@
+@use 'src/styles/_vars';
+
+.result {
+
+    margin: 2rem;
+
+    &__value {
+        font-family: vars.$FontFamily;
+        font-weight: 700;
+        font-size: 2rem;
+        color: vars.$Primary;
+        margin-bottom: .6rem;
+    }
+
+    &__currency {
+        font-family: vars.$FontFamily;
+        font-weight: 300;
+        color: vars.$Primary;
+        letter-spacing: .05rem;
+    }
+
+}

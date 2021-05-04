@@ -1,0 +1,20 @@
+@use 'src/styles/vars';
+
+.header {
+    background-color: vars.$Primary;
+    color: vars.$Light;
+    padding: 2rem;
+
+    &__title {
+        font-size: 2rem;
+        font-family: vars.$FontFamily;
+        font-weight: 700;
+        margin-bottom: 0.6rem;
+    }
+
+    &__input {
+        font-family: vars.$FontFamily;
+        font-weight: 300;
+        letter-spacing: 0.05rem;
+    }
+}
