@@ -15,7 +15,7 @@ const App = () => (
   <div className="app">
     <Header title="Converter" input="1 euro" />
     <Currencies currencies={data} />
-    <Results currencies={data} />
+    <Results rate="1.09" name="United States Dollar" />
   </div>
 );
 
