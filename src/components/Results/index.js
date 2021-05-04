@@ -6,7 +6,7 @@ import './results.scss';
 const Results = ({ currencies }) => (
   <section className="result">
     {currencies.map((currency) => (
-      <div>
+      <div key={currency.name}>
         <p className="result__value">{currency.rate}</p>
         <p className="result__currency">{currency.name}</p>
       </div>
