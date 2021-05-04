@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Currency from './currency';
+
 import './currencies.scss';
 
 const Currencies = ({ currencies }) => (
-  <section>
-    <ul className="currencies">
-      <h2 className="currencies__title">Currencies</h2>
+  <section className="currencies">
+    <h2 className="currencies__title">Currencies</h2>
+    <ul className="currencies__list">
       {currencies.map((currency) => (
-        <li key={currency.name} className="currencies__item">
-          {currency.name}
-        </li>
+        <Currency
+          key={currency.name}
+          {...currency}
+        />
       ))}
     </ul>
   </section>
