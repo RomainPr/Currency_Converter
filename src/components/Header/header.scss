@@ -3,10 +3,11 @@
 .header {
     background-color: vars.$Primary;
     color: vars.$Light;
-    padding: 2rem;
+    text-align: center;
+    padding: vars.$gutter * 3 0;
 
     &__title {
-        font-size: 2rem;
+        font-size: 2em;
         font-family: vars.$FontFamily;
         font-weight: 700;
         margin-bottom: 0.6rem;
@@ -15,6 +16,7 @@
     &__input {
         font-family: vars.$FontFamily;
         font-weight: 300;
+        font-size: 1.3em;
         letter-spacing: 0.05rem;
     }
 }

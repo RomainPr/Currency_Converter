@@ -1,36 +1,27 @@
 @use 'src/styles/_vars';
 
 .currencies {
-  overflow-y: scroll;
-  height: 200px;
-  text-align: left;
-  padding: 0.5rem;
+  background-color: vars.$Light;
+  overflow-y: auto;
+  max-height: 200px;
 
   &__title {
     font-family: vars.$FontFamily;
     font-weight: 700;
-    color: vars.$Primary;
-    padding: 1rem 0.5rem;
-    border-bottom: 1px solid vars.$Secondary;
+    padding: vars.$gutter;
   }
 
   &__item {
-    padding: 1rem 0.5rem;
-    border-bottom: 1px solid vars.$Secondary;
+    padding: vars.$gutter;
+    border-top: 1px solid vars.$Light;
     cursor: pointer;
     font-family: vars.$FontFamily;
     font-weight: 500;
-    color: vars.$Primary;
-    transition: all .2s ease-in-out;
-
-    &:last-child {
-        border: none;
-    }
+    transition: background-color vars.$transition-slow;
 
     &:hover {
-      background-color: rgba(187,84,50,0.4);
-      color: vars.$Primary;
-      transition: background-color ease-in-out .2s;
+      background-color: vars.$Secondary;
+      transition-duration: vars.$transition-fast;
     }
   }
 }

@@ -1,21 +1,21 @@
 // == Import npm
 import React from 'react';
 
-// == Import
-import './styles.css';
 import Header from 'src/components/Header';
 import Currencies from 'src/components/Currencies';
 import Results from 'src/components/Results';
 
+import './app.scss';
+
 // import de nos données statiques
-import data from 'src/data/currencies';
+import currenciesList from 'src/data/currencies';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <Header title="Converter" input="1 euro" />
-    <Currencies currencies={data} />
-    <Results rate="1.09" name="United States Dollar" />
+    <Header baseAmount={1} />
+    <Currencies currencies={currenciesList} />
+    <Results value={1.09} currency="United States Dollar" />
   </div>
 );
 

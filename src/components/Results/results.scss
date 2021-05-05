@@ -1,22 +1,22 @@
 @use 'src/styles/_vars';
 
 .result {
+  background-color: vars.$Light;
+  padding: vars.$gutter * 3 0;
+  text-align: center;
 
-    margin: 2rem;
+  &__value {
+    font-family: vars.$FontFamily;
+    font-weight: 700;
+    font-size: 2em;
+    color: vars.$Primary;
+    margin-bottom: 0.6rem;
+  }
 
-    &__value {
-        font-family: vars.$FontFamily;
-        font-weight: 700;
-        font-size: 2rem;
-        color: vars.$Primary;
-        margin-bottom: .6rem;
-    }
-
-    &__currency {
-        font-family: vars.$FontFamily;
-        font-weight: 300;
-        color: vars.$Primary;
-        letter-spacing: .05rem;
-    }
-
+  &__currency {
+    font-family: vars.$FontFamily;
+    font-weight: 300;
+    color: vars.$Primary;
+    letter-spacing: 0.05rem;
+  }
 }

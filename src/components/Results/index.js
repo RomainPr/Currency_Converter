@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 
 import './results.scss';
 
-const Results = ({ rate, name }) => (
+const Results = ({ value, currency }) => (
   <section className="result">
-    <div>
-      <p className="result__value">{rate}</p>
-      <p className="result__currency">{name}</p>
-    </div>
+    <p className="result__value">{value}</p>
+    <p className="result__currency">{currency}</p>
   </section>
 );
 
 Results.propTypes = {
-  rate: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  currency: PropTypes.string.isRequired,
 };
 
 export default Results;
