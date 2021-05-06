@@ -5,10 +5,27 @@
   overflow-y: auto;
   max-height: 200px;
 
+  &--hidden {
+    display: none;
+  }
+
+  &::-webkit-scrollbar {
+    width: vars.$gutter/2;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: vars.$Light;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: vars.$Primary;
+    outline: 1px solid black;
+  }
+
   &__title {
-    font-family: vars.$FontFamily;
-    font-weight: 700;
     padding: vars.$gutter;
+    padding-top: vars.$gutter;
+    font-weight: 700;
   }
 
   &__item {

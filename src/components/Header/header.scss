@@ -1,22 +1,41 @@
 @use 'src/styles/vars';
 
 .header {
-    background-color: vars.$Primary;
-    color: vars.$Light;
-    text-align: center;
-    padding: vars.$gutter * 3 0;
+  background-color: vars.$Primary;
+  color: vars.$Light;
+  text-align: center;
+  padding: vars.$gutter * 3 0;
 
-    &__title {
-        font-size: 2em;
-        font-family: vars.$FontFamily;
-        font-weight: 700;
-        margin-bottom: 0.6rem;
+  &__title {
+    font-size: 2em;
+    font-family: vars.$FontFamily;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  &__input {
+    padding: 0.8rem;
+    width: 200px;
+    margin: 1.2rem 0 1.2rem 0.6rem;
+    border: none;
+    color: vars.$Primary;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+
+    &::placeholder {
+        font-size: 0.8rem;
     }
 
-    &__input {
-        font-family: vars.$FontFamily;
-        font-weight: 300;
-        font-size: 1.3em;
-        letter-spacing: 0.05rem;
-    }
+  }
+
+  &__currency {
+    vertical-align: middle;
+    margin-left: 0.6rem;
+    font-size: 1.5rem;
+  }
+
+  &__amount {
+    margin-top: vars.$gutter;
+    font-size: 1.3em;
+  }
 }

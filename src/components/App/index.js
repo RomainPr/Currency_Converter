@@ -1,3 +1,4 @@
+/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 // == Import npm
 import React from 'react';
@@ -40,17 +41,22 @@ class App extends React.Component {
     // meme une fois détachée
     this.handleToggleClick = this.handleToggleClick.bind(this);
     this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
   componentDidMount() {
     console.log('Le composant App a été monté');
   }
 
-  componentDidUpdate() {
-    console.log('didUpdate - mise à jour du titre de la page');
-    // effet de bord, on parle au monde extérieur
-    // ici le titre du document
-    document.title = `Conversion euros vers ${this.state.selectedCurrency}`;
+  componentDidUpdate(prevProps, prevState) {
+    // effet de bord : on parle au monde extérieur
+    // ici : le titre du document
+    // j'ajoute une condition, je ne vais changer le titre de la page,
+    // que si la devise selectionnée a changé.
+    if (prevState.selectedCurrency !== this.state.selectedCurrency) {
+      console.log('modif du titre');
+      document.title = `Conversion euros vers ${this.state.selectedCurrency}`;
+    }
   }
 
   handleToggleClick() {
@@ -67,8 +73,20 @@ class App extends React.Component {
   }
 
   handleCurrencyClick(currency) {
+    // lors du clic sur une devise, je vais modifier mon state
+    // pour changer la devise selectionnée
+    // note : pas besoin de recopier le state en entier, setState s'en occupe !
+    // on donne simplement la ou les clés qui ont changé.
     this.setState({
       selectedCurrency: currency,
+    });
+  }
+
+  // une fonction qui sera appellée par le composant Header
+  // lorsque la valeur sera changée par l'utilisateur
+  handleAmountChange(newAmount) {
+    this.setState({
+      baseAmount: (newAmount),
     });
   }
 
@@ -95,7 +113,7 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <Header baseAmount={this.state.baseAmount} />
+        <Header baseAmount={this.state.baseAmount} onChangeBaseAmount={this.handleAmountChange} />
         {/*
           Notre premier composant contrôlé !
           Un composant contrôlé a deux props :
@@ -105,6 +123,7 @@ class App extends React.Component {
         <Toggler isOpen={this.state.open} onToggle={this.handleToggleClick} />
         {this.state.open && (
           <Currencies
+            isOpen={this.state.open}
             onCurrencyClick={this.handleCurrencyClick}
             currencies={currenciesList}
           />

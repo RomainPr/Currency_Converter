@@ -3,10 +3,21 @@ import PropTypes from 'prop-types';
 
 import './header.scss';
 
-const Header = ({ baseAmount }) => (
+const Header = ({ baseAmount, onChangeBaseAmount }) => (
   <header className="header">
     <h1 className="header__title">Converter</h1>
-    <p className="header__input">{baseAmount} euro</p>
+    <input
+      className="header__input"
+      type="number"
+      min="0"
+      placeholder="Valeur en euros"
+      value={baseAmount}
+      onChange={(event) => {
+        onChangeBaseAmount(parseInt(event.target.value, 10));
+      }}
+    />
+    <span className="header__currency">€</span>
+    <p className="header__amount">{baseAmount} euro</p>
   </header>
 );
 
@@ -20,6 +31,7 @@ Header.defaultProps = {
 
 Header.propTypes = {
   baseAmount: PropTypes.number,
+  onChangeBaseAmount: PropTypes.func.isRequired,
 };
 
 export default Header;
