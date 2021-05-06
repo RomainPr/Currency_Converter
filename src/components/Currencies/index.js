@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 import './currencies.scss';
 
-const Currencies = ({ currencies }) => (
+const Currencies = ({ currencies, onCurrencyClick }) => (
   <section className="currencies">
     <h2 className="currencies__title">Currencies</h2>
     <ul className="currencies__list">
       {
         currencies.map((currency) => (
           <li
+            onClick={onCurrencyClick}
             key={currency.name}
             className="currencies__item"
           >
@@ -28,6 +29,7 @@ Currencies.propTypes = {
       rate: PropTypes.number.isRequired,
     }),
   ).isRequired,
+  onCurrencyClick: PropTypes.func.isRequired,
 };
 
 export default Currencies;

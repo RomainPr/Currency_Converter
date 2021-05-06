@@ -38,10 +38,11 @@ class App extends React.Component {
     // a ce stade, this a la bonne valeur
     // du coup, handleClick aura le bon contexte
     // meme une fois détachée
-    this.handleClick = this.handleClick.bind(this);
+    this.handleToggleClick = this.handleToggleClick.bind(this);
+    this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
   }
 
-  handleClick() {
+  handleToggleClick() {
     // je veux changer la valeur de "open" dans mon state
     // en React, on ne modifie jamais le state directement.
     // on utilisera toujours la méthode setState
@@ -53,6 +54,8 @@ class App extends React.Component {
       open: !this.state.open,
     });
   }
+
+  handleCurrencyClick() {}
 
   makeConversion() {
     // objectif : convertir la valeur de base
@@ -84,12 +87,17 @@ class App extends React.Component {
           - une donnée en provenance du state
           - une fonction pour modifier cette donnée dans le state
         */}
-        <Toggler
-          isOpen={this.state.open}
-          onToggle={this.handleClick}
+        <Toggler isOpen={this.state.open} onToggle={this.handleToggleClick} />
+        {this.state.open && (
+          <Currencies
+            onCurrencyClick={this.handleCurrencyClick}
+            currencies={currenciesList}
+          />
+        )}
+        <Results
+          value={convertedAmount}
+          currency={this.state.selectedCurrency}
         />
-        {this.state.open && <Currencies currencies={currenciesList} />}
-        <Results value={convertedAmount} currency={this.state.selectedCurrency} />
       </div>
     );
   }
