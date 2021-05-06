@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Currency from './currency';
+
 import './currencies.scss';
 
-const Currencies = ({ currencies, onCurrencyClick, isOpen }) => (
+const Currencies = ({
+  selectedCurrency, currencies, onCurrencyClick, isOpen,
+}) => (
   <section className={isOpen ? 'currencies' : 'currencies currencies--hidden'}>
     <h2 className="currencies__title">Currencies</h2>
     <ul className="currencies__list">
@@ -13,13 +17,12 @@ const Currencies = ({ currencies, onCurrencyClick, isOpen }) => (
         // on doit faire une fonction anonyme fléchée pour bien donner un callback
         // si l'on avait juste écrit : onClick={onCurrencyClick(currency.name)}
         // Alors le code aurait été exécuté tout de suite, lors du render
-        <li
-          onClick={() => onCurrencyClick(currency.name)}
+        <Currency
+          isActive={currency.name === selectedCurrency}
           key={currency.name}
-          className="currencies__item"
-        >
-          {currency.name}
-        </li>
+          name={currency.name}
+          onCurrencyClick={() => onCurrencyClick(currency.name)}
+        />
       ))}
     </ul>
   </section>
@@ -34,6 +37,7 @@ Currencies.propTypes = {
   ).isRequired,
   onCurrencyClick: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  selectedCurrency: PropTypes.string.isRequired,
 };
 
 export default Currencies;
