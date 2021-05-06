@@ -44,8 +44,14 @@ class App extends React.Component {
     this.handleAmountChange = this.handleAmountChange.bind(this);
   }
 
+  // appelée après chaque render
+  // c'est a dire, lorsque une prop ou un bout du state changent
+  // la méthode componentDidUpdate prend deux parametres
+  // les anciennes props avant la modification
+  // et l'ancien state avant la modification
+  // en d'autres termes, les props et le state du rendu précédent
   componentDidMount() {
-    console.log('Le composant App a été monté');
+  // console.log('Le composant App a été monté');
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -54,7 +60,6 @@ class App extends React.Component {
     // j'ajoute une condition, je ne vais changer le titre de la page,
     // que si la devise selectionnée a changé.
     if (prevState.selectedCurrency !== this.state.selectedCurrency) {
-      console.log('modif du titre');
       document.title = `Conversion euros vers ${this.state.selectedCurrency}`;
     }
   }
@@ -124,6 +129,7 @@ class App extends React.Component {
         {this.state.open && (
           <Currencies
             isOpen={this.state.open}
+            selectedCurrency={this.state.selectedCurrency}
             onCurrencyClick={this.handleCurrencyClick}
             currencies={currenciesList}
           />

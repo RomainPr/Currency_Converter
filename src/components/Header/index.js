@@ -13,7 +13,8 @@ const Header = ({ baseAmount, onChangeBaseAmount }) => (
       placeholder="Valeur en euros"
       value={baseAmount}
       onChange={(event) => {
-        onChangeBaseAmount(parseInt(event.target.value, 10));
+        const newValue = event.target.value !== '' ? parseInt(event.target.value, 10) : 0;
+        onChangeBaseAmount(newValue);
       }}
     />
     <span className="header__currency">€</span>

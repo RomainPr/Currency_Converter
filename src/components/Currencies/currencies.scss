@@ -36,6 +36,11 @@
     font-weight: 500;
     transition: background-color vars.$transition-slow;
 
+    &--active {
+      background-color: vars.$Primary;
+      color: vars.$Light;
+    }
+
     &:hover {
       background-color: vars.$Secondary;
       transition-duration: vars.$transition-fast;
