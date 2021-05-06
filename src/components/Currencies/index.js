@@ -9,8 +9,13 @@ const Currencies = ({ currencies, onCurrencyClick }) => (
     <ul className="currencies__list">
       {
         currencies.map((currency) => (
+          // dans le onClick, on veut appeler la prop onCurrencyClick
+          // en lui donnant en paramètre la devise (currency.name)
+          // on doit faire une fonction anonyme fléchée pour bien donner un callback
+          // si l'on avait juste écrit : onClick={onCurrencyClick(currency.name)}
+          // Alors le code aurait été exécuté tout de suite, lors du render
           <li
-            onClick={onCurrencyClick}
+            onClick={() => onCurrencyClick(currency.name)}
             key={currency.name}
             className="currencies__item"
           >

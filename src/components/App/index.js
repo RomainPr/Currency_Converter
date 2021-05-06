@@ -42,6 +42,17 @@ class App extends React.Component {
     this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
   }
 
+  componentDidMount() {
+    console.log('Le composant App a été monté');
+  }
+
+  componentDidUpdate() {
+    console.log('didUpdate - mise à jour du titre de la page');
+    // effet de bord, on parle au monde extérieur
+    // ici le titre du document
+    document.title = `Conversion euros vers ${this.state.selectedCurrency}`;
+  }
+
   handleToggleClick() {
     // je veux changer la valeur de "open" dans mon state
     // en React, on ne modifie jamais le state directement.
@@ -55,7 +66,11 @@ class App extends React.Component {
     });
   }
 
-  handleCurrencyClick() {}
+  handleCurrencyClick(currency) {
+    this.setState({
+      selectedCurrency: currency,
+    });
+  }
 
   makeConversion() {
     // objectif : convertir la valeur de base
