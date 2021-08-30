@@ -4,7 +4,7 @@ Convertisseur de devises réalisé avec React.
 
 ## Stack 
 
-React
-HTML
-SCSS
-Javascript
+- React
+- HTML
+- SCSS
+- Javascript
